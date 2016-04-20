@@ -1,14 +1,8 @@
 require('babel-register')();
 
-var chai = require('chai');
-var chaiEnzyme = require('chai-enzyme');
-
-chai.use(chaiEnzyme());
-
+// jsdom setup
 var jsdom = require('jsdom').jsdom;
-
 var exposedProperties = ['window', 'navigator', 'document'];
-
 global.document = jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((property) => {
@@ -17,9 +11,11 @@ Object.keys(document.defaultView).forEach((property) => {
         global[property] = document.defaultView[property];
     }
 });
-
 global.navigator = {
     userAgent: 'node.js'
 };
 
-documentRef = document;
+// chai setup
+var chai = require('chai');
+var chaiEnzyme = require('chai-enzyme');
+chai.use(chaiEnzyme());

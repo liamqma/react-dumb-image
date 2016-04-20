@@ -12,9 +12,9 @@ class DumbImage extends Component {
     componentDidMount() {
         // if fall back image is given,
         // use src if src is loaded correctly
-        // otherwise use defaultSrc
-        if (this.hasFallBack()) {
-            const image = new Image();
+        // otherwise use default src
+        if (typeof window !== 'undefined' && this.hasFallBack()) {
+            const image = new window.Image();
             image.onload = () => {
                 this.setState({
                     src: this.props.src
@@ -22,7 +22,7 @@ class DumbImage extends Component {
             };
             image.onerror = () => {
                 this.setState({
-                    src: this.props.defaultSrc
+                    src: this.props.default
                 });
             };
             image.src = this.props.src;
@@ -30,7 +30,7 @@ class DumbImage extends Component {
     }
 
     hasFallBack() {
-        return !!this.props.defaultSrc;
+        return !!this.props.default;
     }
 
     render() {
@@ -46,7 +46,7 @@ class DumbImage extends Component {
 
 DumbImage.propTypes = {
     src: PropTypes.string.isRequired,
-    defaultSrc: PropTypes.string // fall back image
+    default: PropTypes.string // fall back image
 };
 
 export default DumbImage;

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-class SmartImage extends Component {
+class DumbImage extends Component {
 
     constructor(props) {
         super(props);
@@ -44,9 +44,9 @@ class SmartImage extends Component {
     }
 }
 
-SmartImage.propTypes = {
+DumbImage.propTypes = {
     src: PropTypes.string.isRequired,
     defaultSrc: PropTypes.string // fall back image
 };
 
-export default SmartImage;
+export default DumbImage;

@@ -1,22 +1,36 @@
 {
-  "name": "react-smart-image",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/liamqma/react-smart-image.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/liamqma/react-smart-image/issues"
-  },
-  "homepage": "https://github.com/liamqma/react-smart-image#readme",
-  "dependencies": {
-    "react": "^15.0.1"
-  }
+    "name": "react-smart-image",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha test/setup.js test/**/*.spec.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/liamqma/react-smart-image.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/liamqma/react-smart-image/issues"
+    },
+    "homepage": "https://github.com/liamqma/react-smart-image#readme",
+    "dependencies": {
+        "react": "0.14.x || 15.0.x"
+    },
+    "devDependencies": {
+        "babel": "^6.5.2",
+        "babel-preset-airbnb": "^1.1.1",
+        "babel-register": "^6.7.2",
+        "chai": "^3.5.0",
+        "chai-enzyme": "^0.4.2",
+        "cheerio": "^0.20.0",
+        "enzyme": "^2.2.0",
+        "jsdom": "^8.4.0",
+        "mocha": "^2.4.5",
+        "react": "^15.0.1",
+        "react-addons-test-utils": "^15.0.1",
+        "react-dom": "^15.0.1"
+    }
 }

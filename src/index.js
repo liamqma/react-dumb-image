@@ -4,29 +4,39 @@ class DumbImage extends Component {
 
     constructor(props) {
         super(props);
+        this._isMounted = false;
         this.state = {
             src: null
         }
     }
 
     componentDidMount() {
+        this._isMounted = true;
         // if fall back image is given,
         // use src if src is loaded correctly
         // otherwise use default src
         if (typeof window !== 'undefined' && this.hasFallBack()) {
             const image = new window.Image();
             image.onload = () => {
-                this.setState({
-                    src: this.props.src
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        src: this.props.src
+                    });
+                }
             };
             image.onerror = () => {
-                this.setState({
-                    src: this.props.default
-                });
+                if (this._isMounted) {
+                    this.setState({
+                        src: this.props.default
+                    });
+                }
             };
             image.src = this.props.src;
         }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     hasFallBack() {

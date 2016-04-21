@@ -1,19 +1,26 @@
 var path = require("path");
+var webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        app: ['./src/index']
-    },
+    devtool: 'cheap-module-eval-source-map',
+    entry: [
+        'webpack-hot-middleware/client',
+        './demo/index'
+    ],
     output: {
-        path: path.resolve(__dirname, "build"),
-        publicPath: "/assets/",
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "/static/",
         filename: "bundle.js"
     },
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ],
     module: {
         loaders: [
             {
                 test: /\.js/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loader: 'babel',
                 query: {
                     presets: ['airbnb']

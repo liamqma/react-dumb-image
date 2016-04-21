@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import omit from 'lodash.omit';
 
 class DumbImage extends Component {
 
@@ -44,13 +45,14 @@ class DumbImage extends Component {
     }
 
     render() {
+        const others = omit(this.props, ['src', 'default']);
         if (this.hasFallBack()) {
             if (this.state.src) {
-                return <img src={this.state.src}/>
+                return <img {...others} src={this.state.src}/>
             }
             return null;
         }
-        return <img src={this.props.src}/>;
+        return <img {...others} src={this.props.src}/>;
     }
 }
 

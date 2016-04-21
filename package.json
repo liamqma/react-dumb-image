@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/liamqma/react-smart-image#readme",
   "dependencies": {
+    "lodash.omit": "^4.2.1",
     "react": "0.14.x || 15.0.x"
   },
   "devDependencies": {

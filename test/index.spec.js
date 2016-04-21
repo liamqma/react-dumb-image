@@ -10,19 +10,23 @@ describe('<DumbImage />', function () {
         };
     });
 
+    it('should include alt if alt is provided', function() {
+        expect(shallow(<DumbImage src="foo" alt="bar"/>)).to.contain(<img src="foo" alt="bar"/>);
+    });
+
     describe('when no default src', function () {
         it('it should render an image', function () {
             expect(shallow(<DumbImage src="foo"/>)).to.contain(<img src="foo"/>);
         });
     });
     describe('when has default src', function () {
-        it('it should fallback to default if src fails', function () {
+        it('should fallback to default if src fails', function () {
             global.window.Image.prototype.__defineSetter__('src', function () {
                 this.onerror();
             });
             expect(mount(<DumbImage src="foo" default="bar"/>)).to.contain(<img src="bar"/>);
         });
-        it('it should use src if src success', function () {
+        it('should use src if src success', function () {
             global.window.Image.prototype.__defineSetter__('src', function () {
                 this.onload();
             });

@@ -1,7 +1,7 @@
 {
   "name": "react-smart-image",
   "version": "0.0.1",
-  "description": "",
+  "description": "A React component for providing a fallback img solution",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && mkdir dist && babel src/index.js --out-file dist/index.js",
@@ -41,7 +41,6 @@
     "express": "^4.13.4",
     "jsdom": "^8.4.0",
     "mocha": "^2.4.5",
-    "react": "^15.0.1",
     "react-addons-test-utils": "^15.0.1",
     "react-dom": "^15.0.1",
     "webpack": "^1.13.0"

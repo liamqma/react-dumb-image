@@ -53,14 +53,14 @@ class DumbImage extends Component {
   }
 
   render() {
-    const others = omit(this.props, ['src', 'default']);
+    const others = omit(this.props, ['alt', 'src', 'default']);
     if (this.hasFallBack()) {
       if (this.state.src) {
-        return <img alt={this.props.alt} {...others} src={this.state.src} />;
+        return <img {...others} alt={this.props.alt} src={this.state.src} />;
       }
       return null;
     }
-    return <img alt={this.props.alt} {...others} src={this.props.src} />;
+    return <img {...others} alt={this.props.alt} src={this.props.src} />;
   }
 }
 

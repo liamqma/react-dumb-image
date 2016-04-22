@@ -33,7 +33,7 @@ describe('<DumbImage />', function () {
 
   describe('when no default src', function () {
     it('it should render an image', function () {
-      expect(shallow(<DumbImage src="foo"/>)).to.contain(<img src="foo"/>);
+      expect(shallow(<DumbImage src="foo"/>).html()).to.have.string('foo');
     });
   });
   describe('when has default src', function () {
@@ -41,10 +41,10 @@ describe('<DumbImage />', function () {
       ImageStub.prototype.__defineSetter__('src', function () {
         this.onerror();
       });
-      expect(mount(<DumbImage src="foo" default="bar"/>)).to.contain(<img src="bar"/>);
+      expect(mount(<DumbImage src="foo" default="bar"/>).state('src')).to.equal('bar');
     });
     it('should use src if src success', function () {
-      expect(mount(<DumbImage src="foo" default="bar"/>)).to.contain(<img src="foo"/>);
+      expect(mount(<DumbImage src="foo" default="bar"/>).html()).to.have.string('foo');
     });
   });
   describe('static rendering (server side rendering)', function () {

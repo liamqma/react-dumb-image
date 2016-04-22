@@ -19,7 +19,7 @@ React.render((
   <DumbImage
     src="invalid.jpg"
     default="valid.jpg"
-  </ImageLoader>
+  </DumbImage>
 ), document.body);
 
 ```

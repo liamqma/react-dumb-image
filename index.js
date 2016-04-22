@@ -2,12 +2,20 @@ import React from 'react';
 import { render } from 'react-dom';
 import DumbImage from '../src/index';
 
-const rootEl = document.getElementById('root');
+const image1 = document.getElementById('image1');
+const image2 = document.getElementById('image2');
 
 render(
     <DumbImage
         src="http://imagedoesnotexist.com"
-        default="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR3BDX_i2rHh_BvcNgho-4MRl0dt5bzZx30t4lQac0Bm1gQt56g"
+        default="image1.jpg"
     />,
-    rootEl
-)
+    image1
+);
+
+render(
+    <DumbImage
+        src="image2.jpg"
+    />,
+    image2
+);

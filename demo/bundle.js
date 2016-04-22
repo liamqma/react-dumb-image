@@ -20069,7 +20069,6 @@
 
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DumbImage).call(this, props));
 
-	        _this._isMounted = false;
 	        _this.state = {
 	            src: null
 	        };
@@ -20080,29 +20079,14 @@
 	        key: 'componentDidMount',
 	        value: function () {
 	            function componentDidMount() {
-	                var _this2 = this;
-
-	                this._isMounted = true;
 	                // if fall back image is given,
 	                // use src if src is loaded correctly
 	                // otherwise use default src
 	                if (typeof window !== 'undefined' && this.hasFallBack()) {
-	                    var image = new window.Image();
-	                    image.onload = function () {
-	                        if (_this2._isMounted) {
-	                            _this2.setState({
-	                                src: _this2.props.src
-	                            });
-	                        }
-	                    };
-	                    image.onerror = function () {
-	                        if (_this2._isMounted) {
-	                            _this2.setState({
-	                                src: _this2.props['default']
-	                            });
-	                        }
-	                    };
-	                    image.src = this.props.src;
+	                    this.image = new window.Image();
+	                    this.image.onload = this.onLoad.bind(this);
+	                    this.image.onerror = this.onError.bind(this);
+	                    this.image.src = this.props.src;
 	                }
 	            }
 
@@ -20112,10 +20096,47 @@
 	        key: 'componentWillUnmount',
 	        value: function () {
 	            function componentWillUnmount() {
-	                this._isMounted = false;
+	                this.destroy();
 	            }
 
 	            return componentWillUnmount;
+	        }()
+	    }, {
+	        key: 'destroy',
+	        value: function () {
+	            function destroy() {
+	                if (this.image) {
+	                    this.image.onload = null;
+	                    this.image.onerror = null;
+	                    this.image = null;
+	                }
+	            }
+
+	            return destroy;
+	        }()
+	    }, {
+	        key: 'onLoad',
+	        value: function () {
+	            function onLoad() {
+	                this.destroy();
+	                this.setState({
+	                    src: this.props.src
+	                });
+	            }
+
+	            return onLoad;
+	        }()
+	    }, {
+	        key: 'onError',
+	        value: function () {
+	            function onError() {
+	                this.destroy();
+	                this.setState({
+	                    src: this.props['default']
+	                });
+	            }
+
+	            return onError;
 	        }()
 	    }, {
 	        key: 'hasFallBack',

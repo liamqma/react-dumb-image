@@ -10,3 +10,4 @@ lib/config/local*.yaml
 Dockerrun.aws.json
 temp/
 dist/
+.nyc_output

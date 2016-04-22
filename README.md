@@ -2,6 +2,7 @@ react-dumb-image
 ================
 
 [![Build Status](https://travis-ci.org/liamqma/react-dumb-image.svg?branch=master)](https://travis-ci.org/liamqma/react-dumb-image)
+[![Coverage Status](https://coveralls.io/repos/github/liamqma/react-dumb-image/badge.svg?branch=master)](https://coveralls.io/github/liamqma/react-dumb-image?branch=master)
 
 Motivation
 ----------

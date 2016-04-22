@@ -1,25 +1,30 @@
 {
-  "name": "react-smart-image",
+  "name": "react-dumb-image",
   "version": "0.0.1",
   "description": "A React component for providing a fallback img solution",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && mkdir dist && babel src/index.js --out-file dist/index.js",
     "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha test/setup.js test/**/*.spec.js",
     "lint": "./node_modules/.bin/eslint src",
     "github": "git subtree push --prefix demo origin gh-pages",
-    "coveralls": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls"
+    "coveralls": "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liamqma/react-smart-image.git"
+    "url": "git+https://github.com/liamqma/react-dumb-image.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/liamqma/react-smart-image/issues"
+    "url": "https://github.com/liamqma/react-dumb-image/issues"
   },
-  "homepage": "https://github.com/liamqma/react-smart-image#readme",
+  "homepage": "https://github.com/liamqma/react-dumb-image#readme",
+  "files": [
+    "README.md",
+    "dist/",
+    "src/"
+  ],
   "dependencies": {
     "lodash.omit": "^4.2.1",
     "react": "0.14.x || 15.0.x"

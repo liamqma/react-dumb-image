@@ -20038,7 +20038,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -20062,117 +20062,118 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var DumbImage = function (_Component) {
-	    _inherits(DumbImage, _Component);
+	  _inherits(DumbImage, _Component);
 
-	    function DumbImage(props) {
-	        _classCallCheck(this, DumbImage);
+	  function DumbImage(props) {
+	    _classCallCheck(this, DumbImage);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DumbImage).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DumbImage).call(this, props));
 
-	        _this.state = {
-	            src: null
-	        };
-	        return _this;
-	    }
+	    _this.state = {
+	      src: null
+	    };
+	    return _this;
+	  }
 
-	    _createClass(DumbImage, [{
-	        key: 'componentDidMount',
-	        value: function () {
-	            function componentDidMount() {
-	                // if fall back image is given,
-	                // use src if src is loaded correctly
-	                // otherwise use default src
-	                if (typeof window !== 'undefined' && this.hasFallBack()) {
-	                    this.image = new window.Image();
-	                    this.image.onload = this.onLoad.bind(this);
-	                    this.image.onerror = this.onError.bind(this);
-	                    this.image.src = this.props.src;
-	                }
-	            }
+	  _createClass(DumbImage, [{
+	    key: 'componentDidMount',
+	    value: function () {
+	      function componentDidMount() {
+	        // if fall back image is given,
+	        // use src if src is loaded correctly
+	        // otherwise use default src
+	        if (typeof window !== 'undefined' && this.hasFallBack()) {
+	          this.image = new window.Image();
+	          this.image.onload = this.onLoad.bind(this);
+	          this.image.onerror = this.onError.bind(this);
+	          this.image.src = this.props.src;
+	        }
+	      }
 
-	            return componentDidMount;
-	        }()
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function () {
-	            function componentWillUnmount() {
-	                this.destroy();
-	            }
+	      return componentDidMount;
+	    }()
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function () {
+	      function componentWillUnmount() {
+	        this.destroy();
+	      }
 
-	            return componentWillUnmount;
-	        }()
-	    }, {
-	        key: 'destroy',
-	        value: function () {
-	            function destroy() {
-	                if (this.image) {
-	                    this.image.onload = null;
-	                    this.image.onerror = null;
-	                    this.image = null;
-	                }
-	            }
+	      return componentWillUnmount;
+	    }()
+	  }, {
+	    key: 'onLoad',
+	    value: function () {
+	      function onLoad() {
+	        this.destroy();
+	        this.setState({
+	          src: this.props.src
+	        });
+	      }
 
-	            return destroy;
-	        }()
-	    }, {
-	        key: 'onLoad',
-	        value: function () {
-	            function onLoad() {
-	                this.destroy();
-	                this.setState({
-	                    src: this.props.src
-	                });
-	            }
+	      return onLoad;
+	    }()
+	  }, {
+	    key: 'onError',
+	    value: function () {
+	      function onError() {
+	        this.destroy();
+	        this.setState({
+	          src: this.props['default']
+	        });
+	      }
 
-	            return onLoad;
-	        }()
-	    }, {
-	        key: 'onError',
-	        value: function () {
-	            function onError() {
-	                this.destroy();
-	                this.setState({
-	                    src: this.props['default']
-	                });
-	            }
+	      return onError;
+	    }()
+	  }, {
+	    key: 'destroy',
+	    value: function () {
+	      function destroy() {
+	        if (this.image) {
+	          this.image.onload = null;
+	          this.image.onerror = null;
+	          this.image = null;
+	        }
+	      }
 
-	            return onError;
-	        }()
-	    }, {
-	        key: 'hasFallBack',
-	        value: function () {
-	            function hasFallBack() {
-	                return !!this.props['default'];
-	            }
+	      return destroy;
+	    }()
+	  }, {
+	    key: 'hasFallBack',
+	    value: function () {
+	      function hasFallBack() {
+	        return !!this.props['default'];
+	      }
 
-	            return hasFallBack;
-	        }()
-	    }, {
-	        key: 'render',
-	        value: function () {
-	            function render() {
-	                var others = (0, _lodash2['default'])(this.props, ['src', 'default']);
-	                if (this.hasFallBack()) {
-	                    if (this.state.src) {
-	                        return _react2['default'].createElement('img', _extends({}, others, { src: this.state.src }));
-	                    }
-	                    return null;
-	                }
-	                return _react2['default'].createElement('img', _extends({}, others, { src: this.props.src }));
-	            }
+	      return hasFallBack;
+	    }()
+	  }, {
+	    key: 'render',
+	    value: function () {
+	      function render() {
+	        var others = (0, _lodash2['default'])(this.props, ['alt', 'src', 'default']);
+	        if (this.hasFallBack()) {
+	          if (this.state.src) {
+	            return _react2['default'].createElement('img', _extends({}, others, { alt: this.props.alt, src: this.state.src }));
+	          }
+	          return null;
+	        }
+	        return _react2['default'].createElement('img', _extends({}, others, { alt: this.props.alt, src: this.props.src }));
+	      }
 
-	            return render;
-	        }()
-	    }]);
+	      return render;
+	    }()
+	  }]);
 
-	    return DumbImage;
+	  return DumbImage;
 	}(_react.Component);
 
 	DumbImage.propTypes = {
-	    src: _react.PropTypes.string.isRequired,
-	    'default': _react.PropTypes.string // fall back image
-	};
+	  src: _react.PropTypes.string.isRequired,
+	  alt: _react.PropTypes.string,
+	  'default': _react.PropTypes.string };
 
+	// fall back image
 	exports['default'] = DumbImage;
 
 /***/ },

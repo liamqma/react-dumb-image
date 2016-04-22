@@ -4,27 +4,64 @@
     <title>Dumb Image</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 50px
+        }
+
+        img {
+            height: 220px;
+        }
+
+        .thumbnail {
+            text-align: center;
+            min-height: 400px;
+        }
+
+        .caption {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-<div class="thumbnail">
-    <div id="image1"></div>
-    <div class="caption">
-        <xmp>
-            <DumbImage
-                src="http://imagedoesnotexist.com"
-                default="image1.jpg"
-            />
-        </xmp>
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div id="image1"></div>
+            <div class="caption">
+                <xmp>
+                    <DumbImage
+                        src="http://imagedoesnotexist.com"
+                        default="image1.jpg"
+                    />
+                </xmp>
+            </div>
+        </div>
     </div>
-</div>
-<div class="thumbnail">
-    <div id="image2"></div>
-    <div class="caption">
-        <xmp>
-            <DumbImage
-                src="image2.jpg"
-            />
-        </xmp>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div id="image2"></div>
+            <div class="caption">
+                <xmp>
+                    <DumbImage
+                        src="image2.jpg"
+                    />
+                </xmp>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <div id="image3"></div>
+            <div class="caption">
+                <xmp>
+                    <DumbImage
+                        src="image3.jpg"
+                        default="image1.jpg"
+                    />
+                </xmp>
+            </div>
+        </div>
     </div>
 </div>
 <script src="bundle.js"></script>
